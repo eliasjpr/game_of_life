@@ -1,14 +1,15 @@
 require "matrix"
 require "game_of_life/neighbors"
+require "game_of_life/rules"
 
 module GameOfLife
   class Grid < Matrix
-    WIDTH = 25
-    HEIGHT = 50
+    WIDTH = 10
+    HEIGHT = 20
 
     def self.build_for(living_cells)
       build(WIDTH, HEIGHT) do |row, column|
-        living_cells.include?([row, column])
+        living_cells.include?([row, column]) ? [row, column] : nil
       end
     end
 

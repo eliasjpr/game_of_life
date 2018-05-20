@@ -6,7 +6,7 @@ module GameOfLife
       columns = [column - 1, column, column + 1]
       locations = rows.product(columns)
       locations.delete(cell)
-      locations.select { |row, col| world[row, col] == true }.compact
+      locations.select { |row, col| !world[row, col].nil? }.compact
     end
   end
 end
