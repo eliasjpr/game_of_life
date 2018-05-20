@@ -24,5 +24,12 @@ module GameOfLife
         assert_equal 3, grid.living_neighbors_for(current_cell)
       end
     end
+
+    def test_it_gets_an_arrays_of_next_generation_cells
+      surviving_cell = [[1,1]]
+      living_cells = [[0,1], [1,2], [2,0]]
+      grid = Grid.build_for(living_cells)
+      assert_equal surviving_cell, grid.next_generation
+    end
   end
 end
