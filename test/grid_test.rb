@@ -13,5 +13,15 @@ module GameOfLife
       grid = Grid.builds_grid_for(living_cells)
       assert_equal true, grid[5,5]
     end
+
+    def test_it_finds_living_neighbors_for_cell
+      current_cell = [1,1]
+      living_cells = [[0,1], [1,2], [2,0]]
+      grid = Grid.builds_grid_for(living_cells)
+
+      Neighbors.living_aorund current_cell, grid do
+        assert_equal 3, grid.living_neighbors_for([1,1])
+      end
+    end
   end
 end
